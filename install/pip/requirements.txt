@@ -21,5 +21,6 @@ tensorboard-plugin-wit
 tensorflow_addons 
 tensorflow_datasets 
 tensorflow-estimator 
+tensorflow-gpu==2.8
 tensorflow_hub
 widgetsnbextension
