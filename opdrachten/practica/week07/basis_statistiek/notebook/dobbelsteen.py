@@ -1,5 +1,5 @@
 import random
-
+import numpy as np
 class Dobbelsteen:
     
     def __init__(self):
@@ -76,6 +76,10 @@ class Dobbelsteen:
 
     def show(self):        
         return str(self.faces.get(self.number))
+    
+    def getRollHistory(self, history):
+        historyArray = np.asarray(history)
+        return historyArray
 
 def main():
     d = Dobbelsteen()
