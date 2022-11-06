@@ -16,4 +16,4 @@ seaborn
 selenium 
 statsmodels 
 sympy
-tensorflow-cpu==2.8
+tensorflow
