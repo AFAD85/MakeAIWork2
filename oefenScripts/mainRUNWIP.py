@@ -40,6 +40,9 @@ End product should contain:
 
 """
 
+### TO-DO - harden imports
+import random as ra
+import datetime as dt
 
 class ClassificationModel():
     # initializes the classification model selected in GUI 
@@ -48,23 +51,36 @@ class ClassificationModel():
         self.model = model
 
     def get_applebatch_classification(batch_id):
-            
+        # returns the classification of the batch
+        pass
 
-class Applebatch():
+class AppleBatch():
+    # class variables(or constants rather...) (same for all objects)
+    BATCH_SIZE = 80
+    NUMBER_OF_BATCHES = 0
+    
     # This class creates objects that can be used to examine and test the other classes in this program
     def __init__(self, apple_directory):
+        AppleBatch.NUMBER_OF_BATCHES += 1  
         self.apple_directory = apple_directory
-        self.batch_size = 80
         self.batch_images = []
-        self.batch_ID = # names the batch with the current date and time
+        self.batch_ID = f'Batch {AppleBatch.NUMBER_OF_BATCHES}{dt.datetime}'  # names the batch with the current date and time
         for file in apple_directory:
-            if len(self.batch_images) < 80:
+            if len(self.batch_images) < AppleBatch.BATCH_SIZE:
                 # fills self.batchImages with randomly selected apples untill it has 80 apples
-                random_apple = apple_directory[randint[len(apple_directory)]]
+                random_apple = apple_directory[ra.randint[len(apple_directory)]]
             else:
                 break
-        return batch_images
+        return self.batch_images
     
+    # function to determine what happens when the object is printed
+    def __str__(self):
+        return "This batch contains {} apples".format(self.batch_size) # will print the makeup of the batch
+    
+    
+    def __del__(self):
+        AppleBatch.NUMBER_OF_BATCHES -= 1
+        print(f'Batch {self.batch_ID} has been deleted')
     
     # returns the aql of the batch
     def get_aql(self):
