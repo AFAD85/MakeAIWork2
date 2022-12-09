@@ -69,13 +69,13 @@ class AppleBatch():
         self.apple_directory = apple_directory
         self.batch_images = []
         self.batch_ID = f'Batch {AppleBatch.NUMBER_OF_BATCHES}{dt.datetime}'  # names the batch with the current date and time
-        self.fill_batch() # fills the batch with 80 apples
+        self._fill_batch() # fills the batch with 80 apples
 
 
 
         return self.batch_images
  
-    def fill_batch(self):
+    def _fill_batch(self):
         for x in range(len(AppleBatch.BATCH_SIZE)):
             # fills self.batchImages with randomly selected apples untill it has 80 apples
             self.batch_images.append(self.apple_directory[ra.randint[len(self.apple_directory)]])
