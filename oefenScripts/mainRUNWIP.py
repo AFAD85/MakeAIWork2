@@ -45,43 +45,51 @@ import random as ra
 import datetime as dt
 
 class ClassificationModel():
+    ### TO-DO Getter en Setter toevoegen
     # initializes the classification model selected in GUI 
     # options are: CNN own design, CNN mobile net transfer learning, CNN paper (unfinished), CNN Squeezenet (unfinished)
     def __init__(self, model):
         self.model = model
 
     def get_applebatch_classification(batch_id):
-        # returns the classification of the batch
+        # returns the classification of the batch, probably going to have this as a method of the AppleBatch class
         pass
 
 class AppleBatch():
+    ### TO-DO Getter en Setter toevoegen
     # class variables(or constants rather...) (same for all objects)
     BATCH_SIZE = 80
+    # tracks the number of created batches, need to determine where to store this value, config file or database?
     NUMBER_OF_BATCHES = 0
     
     # This class creates objects that can be used to examine and test the other classes in this program
     def __init__(self, apple_directory):
+
         AppleBatch.NUMBER_OF_BATCHES += 1  
         self.apple_directory = apple_directory
         self.batch_images = []
         self.batch_ID = f'Batch {AppleBatch.NUMBER_OF_BATCHES}{dt.datetime}'  # names the batch with the current date and time
-        for file in apple_directory:
-            if len(self.batch_images) < AppleBatch.BATCH_SIZE:
-                # fills self.batchImages with randomly selected apples untill it has 80 apples
-                random_apple = apple_directory[ra.randint[len(apple_directory)]]
-            else:
-                break
+        self.fill_batch() # fills the batch with 80 apples
+
+
+
         return self.batch_images
+ 
+    def fill_batch(self):
+        for x in range(len(AppleBatch.BATCH_SIZE)):
+            # fills self.batchImages with randomly selected apples untill it has 80 apples
+            self.batch_images.append(self.apple_directory[ra.randint[len(self.apple_directory)]])
     
     # function to determine what happens when the object is printed
     def __str__(self):
         return "This batch contains {} apples".format(self.batch_size) # will print the makeup of the batch
     
-    
+    # function to determine what happens when the object is deleted
     def __del__(self):
         AppleBatch.NUMBER_OF_BATCHES -= 1
         print(f'Batch {self.batch_ID} has been deleted')
     
+
     # returns the aql of the batch
     def get_aql(self):
 
